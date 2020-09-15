@@ -25,22 +25,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         result = getString(R.string.init_text_calc)
-        expression = getString(R.string.init_text_calc)
         Log.d(TAG, "onCreate")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.d(TAG, "onSaveInstanceState")
-        outState.putString(EXPR_KEY, expressionView.text.toString())
-        outState.putString(RES_KEY, resultView.text.toString())
+        outState.putString(EXPR_KEY, expression)
+        outState.putString(RES_KEY, result)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         Log.d(TAG, "onRestoreInstance")
-        expressionView.text = savedInstanceState.getString(EXPR_KEY, getString(R.string.init_text_calc))
-        resultView.text = savedInstanceState.getString(RES_KEY, getString(R.string.init_text_calc))
+        expression = savedInstanceState.getString(EXPR_KEY, "")
+        result = savedInstanceState.getString(RES_KEY, getString(R.string.init_text_calc))
+        syncStateWithUI()
     }
 
 
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                     // Calculates expression according to IEEE 754, 16 digit precision
                     Expression(expression, MathContext.DECIMAL64).eval().toPlainString()
                 } catch (e: Exception) {
-                    Log.d(TAG, "Error while calculating expression.")
+                    Log.w(TAG, "Error while calculating expression.")
                     "Error!"
                 }
             }
@@ -70,12 +70,7 @@ class MainActivity : AppCompatActivity() {
                 expression += button.text
             }
         }
-        if (expression.isNotEmpty()) {
-            expressionView.text = expression
-        } else {
-            expressionView.text = getString(R.string.init_text_calc)
-        }
-        resultView.text = result
+        syncStateWithUI()
 
         expressionView.post {
             scrollExpressionView.fullScroll(View.FOCUS_RIGHT)
@@ -83,6 +78,15 @@ class MainActivity : AppCompatActivity() {
         resultView.post {
             scrollResultView.fullScroll(View.FOCUS_RIGHT)
         }
+    }
+
+    private fun syncStateWithUI() {
+        if (expression.isNotEmpty()) {
+            expressionView.text = expression
+        } else {
+            expressionView.text = getString(R.string.init_text_calc)
+        }
+        resultView.text = result
     }
 
 }
