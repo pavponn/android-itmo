@@ -1,12 +1,10 @@
 package com.example.calculator
 
-import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.HorizontalScrollView
 import com.udojava.evalex.Expression
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         const val RES_KEY = "RES_KEY"
     }
     private var expression: String = ""
-    private var result: String = "";
+    private var result: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +30,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
         Log.d(TAG, "onSaveInstanceState")
         outState.putString(EXPR_KEY, expressionView.text.toString())
         outState.putString(RES_KEY, resultView.text.toString())
-        super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        Log.d(TAG, "onRestoreInstance")
         super.onRestoreInstanceState(savedInstanceState)
-        expressionView.text = savedInstanceState.getString(EXPR_KEY, "")
-        resultView.text = savedInstanceState.getString(RES_KEY, "")
+        Log.d(TAG, "onRestoreInstance")
+        expressionView.text = savedInstanceState.getString(EXPR_KEY, getString(R.string.init_text_calc))
+        resultView.text = savedInstanceState.getString(RES_KEY, getString(R.string.init_text_calc))
     }
 
 
