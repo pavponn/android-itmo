@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="weekday"
+            type="String" />
+
+        <variable
+            name="temperature"
+            type="String" />
+
+        <variable
+            name="icon"
+            type="Drawable" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_daily"
+        android:orientation="vertical"
+        android:weightSum="7">
+
+        <TextView
+            android:id="@+id/daily_forecast_temp"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@{ temperature }" />
+
+        <ImageView
+            android:id="@+id/daily_forecast_image"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_weight="5"
+            android:background="@color/white"
+            android:contentDescription="@string/main_forecast_image"
+            android:scaleType="fitCenter"
+            android:src="@{ icon }" />
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@{ weekday }"
+            android:textSize="12sp" />
+    </LinearLayout>
+</layout>

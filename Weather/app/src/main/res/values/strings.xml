@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="main_forecast_image">Main forecast image</string>
+    <string name="this_day_weather">This day weather image</string>
+    <string name="location">London, UK</string>
+    <string name="main_temperature">22°С</string>
+    <string name="weather_description">Cloudy</string>
+    <string name="daily_temperature_0">17°С</string>
+    <string name="daily_temperature_1">22°С</string>
+    <string name="daily_temperature_2">23°С</string>
+    <string name="daily_temperature_3">19°С</string>
+    <string name="daily_temperature_4">20°С</string>
+    <string name="day_0_name">Monday</string>
+    <string name="day_1_name">Tuesday</string>
+    <string name="day_2_name">Wednesday</string>
+    <string name="day_3_name">Thursday</string>
+    <string name="day_4_name">Friday</string>
+    <string name="humidity_title">Humidity</string>
+    <string name="wind_title">Wind Flow</string>
+    <string name="pressure_title">Air Pressure</string>
+    <string name="humidity_num">82</string>
+    <string name="wind_num">78</string>
+    <string name="pressure_num">753</string>
+</resources>

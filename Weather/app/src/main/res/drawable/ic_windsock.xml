@@ -1,0 +1,33 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    <path
+        android:fillColor="#e2dff4"
+        android:pathData="m182,131.999h-87c-8.284,0 -15,-6.716 -15,-15s6.716,-15 15,-15h87c8.284,0 15,6.716 15,15s-6.716,15 -15,15z" />
+    <path
+        android:fillColor="#e2dff4"
+        android:pathData="m182,268.999h-85.757c-8.284,0 -15,-6.716 -15,-15s6.716,-15 15,-15h85.757c8.284,0 15,6.716 15,15s-6.716,15 -15,15z" />
+    <path
+        android:fillColor="#ff435b"
+        android:pathData="m182,268.999c-3.702,0 -7.294,-1.371 -10.065,-3.879 -3.142,-2.843 -4.935,-6.883 -4.935,-11.121v-137c0,-4.238 1.793,-8.278 4.935,-11.122s7.337,-4.226 11.558,-3.804l49.507,4.951 35.574,31.125 30.426,-24.524 66,6.6 37.903,31.357 28.097,-24.756 52.492,5.25c7.668,0.767 13.508,7.22 13.508,14.926v77.01c0,7.706 -5.84,14.159 -13.508,14.926l-52.492,5.246 -33,-23.992 -33,30.59 -66,6.597 -38.586,-23.434 -27.414,30.031 -49.508,4.949c-0.498,0.05 -0.996,0.074 -1.492,0.074z" />
+    <path
+        android:fillColor="#00429d"
+        android:pathData="m90,512h-60c-8.284,0 -15,-6.716 -15,-15v-370c0,-24.813 20.187,-45 45,-45s45,20.187 45,45v370c0,8.284 -6.716,15 -15,15z" />
+    <path
+        android:fillColor="#e2dff4"
+        android:pathData="m233,263.976 l66,-6.597v-143.754l-66,-6.601z" />
+    <path
+        android:fillColor="#e2dff4"
+        android:pathData="m365,250.781 l66,-6.597v-117.358l-66,-6.601z" />
+    <path
+        android:fillColor="#00347b"
+        android:pathData="m60,82v430h30c8.284,0 15,-6.716 15,-15v-370c0,-24.813 -20.187,-45 -45,-45z" />
+    <path
+        android:fillColor="#ffde46"
+        android:pathData="m60,89.999c-24.813,0 -45,-20.187 -45,-44.999 0,-24.813 20.187,-45 45,-45s45,20.187 45,45 -20.187,44.999 -45,44.999z" />
+    <path
+        android:fillColor="#ffcd00"
+        android:pathData="m60,0v89.999c24.813,0 45,-20.187 45,-44.999 0,-24.813 -20.187,-45 -45,-45z" />
+</vector>

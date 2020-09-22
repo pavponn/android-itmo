@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/mainBackgroundColor"
+        tools:context=".MainActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.465" />
+
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/titleBackgroundColor"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/app_name"
+            android:textColor="?attr/mainTextColor"
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="1" />
+
+        <ImageView
+            android:id="@+id/main_forecast_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/main_forecast_image"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_cloudy"
+            app:layout_constraintBottom_toTopOf="@+id/current_temperature"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appTitle" />
+
+
+        <TextView
+            android:id="@+id/current_temperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:text="@string/main_temperature"
+            android:textColor="?attr/mainTextColor"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toTopOf="@+id/current_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_forecast_image" />
+
+        <TextView
+            android:id="@+id/current_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/location"
+            android:textColor="?attr/mainTextColor"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/current_weather_forecast"
+            app:layout_constraintTop_toBottomOf="@+id/current_temperature" />
+
+        <TextView
+            android:id="@+id/current_weather_forecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/weather_description"
+            android:textColor="?attr/mainTextColor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/line_1"
+            app:layout_constraintTop_toBottomOf="@+id/current_location" />
+
+        <include
+            android:id="@+id/humidity"
+            layout="@layout/weather_extended_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@{@drawable/ic_humidity}"
+            app:layout_constraintBottom_toTopOf="@id/line_0"
+            app:layout_constraintEnd_toStartOf="@+id/pressure"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_1"
+            app:name="@{@string/humidity_title}"
+            app:num="@{@string/humidity_num}" />
+
+        <include
+            android:id="@+id/pressure"
+            layout="@layout/weather_extended_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:icon="@{@drawable/ic_pressure}"
+            app:layout_constraintBottom_toTopOf="@id/line_0"
+            app:layout_constraintEnd_toStartOf="@+id/wind"
+            app:layout_constraintStart_toEndOf="@id/humidity"
+            app:layout_constraintTop_toBottomOf="@+id/line_1"
+            app:name="@{@string/pressure_title}"
+            app:num="@{@string/pressure_num}" />
+
+        <include
+            android:id="@+id/wind"
+            layout="@layout/weather_extended_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@{@drawable/ic_windsock}"
+            app:layout_constraintBottom_toTopOf="@id/line_0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pressure"
+            app:layout_constraintTop_toBottomOf="@+id/line_1"
+            app:name="@{@string/wind_title}"
+            app:num="@{@string/wind_num}" />
+
+
+        <include
+            android:id="@+id/day_0"
+            layout="@layout/daily_forecast_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@{@drawable/ic_cloud}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/day_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/line_0"
+            app:layout_constraintVertical_bias="0.3"
+            app:temperature="@{@string/daily_temperature_0}"
+            app:weekday="@{@string/day_0_name}" />
+
+        <include
+            android:id="@+id/day_1"
+            layout="@layout/daily_forecast_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@{@drawable/ic_cloudy}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/day_2"
+            app:layout_constraintStart_toEndOf="@+id/day_0"
+            app:layout_constraintTop_toTopOf="@+id/line_0"
+            app:layout_constraintVertical_bias="0.3"
+            app:temperature="@{@string/daily_temperature_1}"
+            app:weekday="@{@string/day_1_name}" />
+
+        <include
+            android:id="@+id/day_2"
+            layout="@layout/daily_forecast_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@{@drawable/ic_sun}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/day_3"
+            app:layout_constraintStart_toEndOf="@id/day_1"
+            app:layout_constraintTop_toTopOf="@+id/line_0"
+            app:layout_constraintVertical_bias="0.3"
+            app:temperature="@{@string/daily_temperature_2}"
+            app:weekday="@{@string/day_2_name}" />
+
+        <include
+            android:id="@+id/day_3"
+            layout="@layout/daily_forecast_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@{@drawable/ic_rain}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/day_4"
+            app:layout_constraintStart_toEndOf="@id/day_2"
+            app:layout_constraintTop_toTopOf="@+id/line_0"
+            app:layout_constraintVertical_bias="0.3"
+            app:temperature="@{@string/daily_temperature_3}"
+            app:weekday="@{@string/day_3_name}" />
+
+        <include
+            android:id="@+id/day_4"
+            layout="@layout/daily_forecast_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@{@drawable/ic_cloudy}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/day_3"
+            app:layout_constraintTop_toTopOf="@+id/line_0"
+            app:layout_constraintVertical_bias="0.3"
+            app:temperature="@{@string/daily_temperature_4}"
+            app:weekday="@{@string/day_4_name}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

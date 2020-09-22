@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="num"
+            type="String" />
+
+        <variable
+            name="icon"
+            type="Drawable" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_extended"
+        android:orientation="vertical"
+        android:weightSum="8">
+
+        <TextView
+            android:id="@+id/weatherNum"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@{num}"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/weatherImage"
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:layout_weight="5"
+            android:background="@color/white"
+            android:contentDescription="@string/main_forecast_image"
+            android:scaleType="fitCenter"
+            android:src="@{icon}" />
+
+        <TextView
+            android:id="@+id/weatherName"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@{name}"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</layout>

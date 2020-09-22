@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="lightestBlueBackgroundColor">#F4F9FF</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81b60</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="lightGrayText">#999d9f</color>
+    <color name="lightBlueText">#8bc7fe</color>
+    <color name="calmNightBackground">#354066</color>
+    <color name="nightBackground">#242E4f</color>
+    <color name="deepNightBackground">#242e4f</color>
+    <color name="lightNightText">#D4D6DD</color>
+</resources>

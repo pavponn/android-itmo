@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="titleBackgroundColor" format="color" />
+    <attr name="secondaryBackgroundColor" format="color" />
+    <attr name="mainBackgroundColor" format="color" />
+    <attr name="mainTextColor" format="color" />
+    <attr name="forecastTextColor" format="color" />
+</resources>
