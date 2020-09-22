@@ -30,7 +30,8 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:background="@color/white"
+            android:background="?attr/secondaryBackgroundColor"
+            android:textColor="?attr/forecastTextColor"
             android:gravity="center"
             android:text="@{num}"
             android:textSize="20sp" />
@@ -40,8 +41,8 @@
             android:layout_width="110dp"
             android:layout_height="80dp"
             android:layout_weight="5"
-            android:background="@color/white"
-            android:contentDescription="@string/main_forecast_image"
+            android:background="?attr/secondaryBackgroundColor"
+            android:contentDescription="@string/extended_weather_image"
             android:scaleType="fitCenter"
             android:src="@{icon}" />
 
@@ -50,7 +51,8 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/white"
+            android:background="?attr/secondaryBackgroundColor"
+            android:textColor="?attr/forecastTextColor"
             android:gravity="center"
             android:text="@{name}"
             android:textSize="12sp" />

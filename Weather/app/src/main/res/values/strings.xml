@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="main_forecast_image">Main forecast image</string>
+    <string name="daily_forecast_image">Daily forecast image</string>
+    <string name="extended_weather_image">Extended weather image</string>
     <string name="this_day_weather">This day weather image</string>
-    <string name="location">London, UK</string>
+    <string name="change_theme_image">Change theme image</string>
+    <string name="location">London, United Kingdom</string>
     <string name="main_temperature">22°С</string>
     <string name="weather_description">Cloudy</string>
     <string name="daily_temperature_0">17°С</string>

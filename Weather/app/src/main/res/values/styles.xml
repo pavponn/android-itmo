@@ -5,7 +5,7 @@
         <item name="secondaryBackgroundColor">@color/white</item>
         <item name="mainBackgroundColor">@color/lightestBlueBackgroundColor</item>
         <item name="mainTextColor">@color/lightGrayText</item>
-        <item name="forecastTextColor">@color/lightBlueText</item>
+        <item name="forecastTextColor">@color/lightGrayText</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">

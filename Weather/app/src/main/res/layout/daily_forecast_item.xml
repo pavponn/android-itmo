@@ -30,7 +30,8 @@
             android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/white"
+            android:background="?attr/secondaryBackgroundColor"
+            android:textColor="?attr/forecastTextColor"
             android:gravity="center"
             android:text="@{ temperature }" />
 
@@ -39,8 +40,8 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_weight="5"
-            android:background="@color/white"
-            android:contentDescription="@string/main_forecast_image"
+            android:background="?attr/secondaryBackgroundColor"
+            android:contentDescription="@string/daily_forecast_image"
             android:scaleType="fitCenter"
             android:src="@{ icon }" />
 
@@ -49,7 +50,8 @@
             android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/white"
+            android:background="?attr/secondaryBackgroundColor"
+            android:textColor="?attr/forecastTextColor"
             android:gravity="center"
             android:text="@{ weekday }"
             android:textSize="12sp" />
