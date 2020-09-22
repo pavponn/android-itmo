@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="titleFontSize" format="dimension" />
+    <attr name="temperatureFontSize" format="dimension" />
+    <attr name="locationFontSize" format="dimension" />
+    <attr name="weatherDescriptionFontSize" format="dimension" />
+    <attr name="weekdayFontSize" format="dimension" />
+    <attr name="weekdayTempFontSize" format="dimension" />
+    <attr name="extendedWeatherNumFontSize" format="dimension"/>
+    <attr name="extendedWeatherName" format="dimension"/>
     <attr name="titleBackgroundColor" format="color" />
     <attr name="secondaryBackgroundColor" format="color" />
     <attr name="mainBackgroundColor" format="color" />

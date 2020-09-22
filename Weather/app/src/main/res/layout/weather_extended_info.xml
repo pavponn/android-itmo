@@ -34,7 +34,7 @@
             android:textColor="?attr/forecastTextColor"
             android:gravity="center"
             android:text="@{num}"
-            android:textSize="20sp" />
+            android:textSize="?attr/extendedWeatherNumFontSize" />
 
         <ImageView
             android:id="@+id/weatherImage"
@@ -55,7 +55,7 @@
             android:textColor="?attr/forecastTextColor"
             android:gravity="center"
             android:text="@{name}"
-            android:textSize="12sp" />
+            android:textSize="?attr/extendedWeatherName" />
 
     </LinearLayout>
 </layout>

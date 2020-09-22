@@ -11,6 +11,6 @@
     <color name="lightBlueText">#8bc7fe</color>
     <color name="calmNightBackground">#354066</color>
     <color name="nightBackground">#242E4f</color>
-    <color name="deepNightBackground">#242e4f</color>
+    <color name="deepNightBackground">#242e49</color>
     <color name="lightNightText">#D4D6DD</color>
 </resources>

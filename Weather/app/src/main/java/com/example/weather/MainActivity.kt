@@ -46,10 +46,10 @@ class MainActivity : AppCompatActivity() {
     private fun updateTheme() {
         when (currentTheme) {
             Theme.LIGHT -> {
-                setTheme(R.style.LightTheme)
+                setTheme(R.style.BaseTheme_LightTheme)
             }
             Theme.DARK -> {
-                setTheme(R.style.DarkTheme)
+                setTheme(R.style.BaseTheme_DarkTheme)
             }
         }
     }

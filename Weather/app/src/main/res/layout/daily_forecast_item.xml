@@ -31,9 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?attr/secondaryBackgroundColor"
-            android:textColor="?attr/forecastTextColor"
             android:gravity="center"
-            android:text="@{ temperature }" />
+            android:text="@{ temperature }"
+            android:textSize="?attr/weekdayTempFontSize"
+            android:textColor="?attr/forecastTextColor" />
 
         <ImageView
             android:id="@+id/daily_forecast_image"
@@ -51,9 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?attr/secondaryBackgroundColor"
-            android:textColor="?attr/forecastTextColor"
             android:gravity="center"
             android:text="@{ weekday }"
-            android:textSize="12sp" />
+            android:textColor="?attr/forecastTextColor"
+            android:textSize="?attr/weekdayFontSize" />
     </LinearLayout>
 </layout>
