@@ -30,6 +30,13 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.465" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
         <TextView
             android:id="@+id/appTitle"
             android:layout_width="match_parent"
@@ -140,11 +147,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@{@drawable/ic_cloud}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line_2"
             app:layout_constraintEnd_toStartOf="@id/day_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/line_0"
-            app:layout_constraintVertical_bias="0.3"
             app:temperature="@{@string/daily_temperature_0}"
             app:weekday="@{@string/day_0_name}" />
 
@@ -154,11 +160,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@{@drawable/ic_cloudy}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line_2"
             app:layout_constraintEnd_toStartOf="@+id/day_2"
             app:layout_constraintStart_toEndOf="@+id/day_0"
             app:layout_constraintTop_toTopOf="@+id/line_0"
-            app:layout_constraintVertical_bias="0.3"
             app:temperature="@{@string/daily_temperature_1}"
             app:weekday="@{@string/day_1_name}" />
 
@@ -168,11 +173,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@{@drawable/ic_sun}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line_2"
             app:layout_constraintEnd_toStartOf="@id/day_3"
             app:layout_constraintStart_toEndOf="@id/day_1"
             app:layout_constraintTop_toTopOf="@+id/line_0"
-            app:layout_constraintVertical_bias="0.3"
             app:temperature="@{@string/daily_temperature_2}"
             app:weekday="@{@string/day_2_name}" />
 
@@ -182,11 +186,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@{@drawable/ic_rain}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line_2"
             app:layout_constraintEnd_toStartOf="@id/day_4"
             app:layout_constraintStart_toEndOf="@id/day_2"
             app:layout_constraintTop_toTopOf="@+id/line_0"
-            app:layout_constraintVertical_bias="0.3"
             app:temperature="@{@string/daily_temperature_3}"
             app:weekday="@{@string/day_3_name}" />
 
@@ -196,11 +199,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@{@drawable/ic_cloudy}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/day_3"
             app:layout_constraintTop_toTopOf="@+id/line_0"
-            app:layout_constraintVertical_bias="0.3"
             app:temperature="@{@string/daily_temperature_4}"
             app:weekday="@{@string/day_4_name}" />
 
