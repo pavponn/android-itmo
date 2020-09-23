@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onChangeThemeClick(v: View) {
-        currentTheme = when(currentTheme) {
+        currentTheme = when (currentTheme) {
             Theme.LIGHT -> Theme.DARK
             Theme.DARK -> Theme.LIGHT
         }
