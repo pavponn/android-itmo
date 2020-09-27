@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="read_contacts_reason">Contacts permissions required in order to display contacts.</string>
+    <string name="read_contacts_granted">Contacts permission granted. Please, refresh.</string>
+    <string name="read_contacts_not_granted">Contacts permission not granted.</string>
+    <string name="action_ok">Ok</string>
+    <string name="action_update">Update</string>
+</resources>

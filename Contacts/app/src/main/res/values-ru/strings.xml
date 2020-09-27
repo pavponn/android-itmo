@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="read_contacts_reason">Доступ к контактам необходим для их отображения.</string>
+    <string name="read_contacts_granted">Доступ к контактам предоставлен. Пожалуйста, обновите.</string>
+    <string name="read_contacts_not_granted">Доступ к контактам не предоставлен.</string>
+    <string name="action_ok">OK</string>
+    <string name="action_update">Обновить</string>
+</resources>
