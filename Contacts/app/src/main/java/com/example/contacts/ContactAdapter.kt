@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ContactAdapter(
     private val contacts: List<Contact>,
     private val onClick: (Contact) -> Unit
-): RecyclerView.Adapter<ContactViewHolder>() {
+) : RecyclerView.Adapter<ContactViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val holder = ContactViewHolder(
@@ -23,6 +23,7 @@ class ContactAdapter(
 
     override fun getItemCount(): Int = contacts.size
 
-    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) = holder.bind(contacts[position])
+    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) =
+        holder.bind(contacts[position])
 
 }

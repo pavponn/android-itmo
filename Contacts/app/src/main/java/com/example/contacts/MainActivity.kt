@@ -14,7 +14,12 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private val READ_CONTACTS_REQUEST_ID = 1
+
+    companion object {
+        const val READ_CONTACTS_REQUEST_ID = 1
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,7 +35,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun showContactsOrRequestPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
-            != PackageManager.PERMISSION_GRANTED) {
+            != PackageManager.PERMISSION_GRANTED
+        ) {
             requestContactsPermissions()
         } else {
             showContacts()
@@ -38,7 +44,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestContactsPermissions() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.READ_CONTACTS
+            )
+        ) {
             Snackbar
                 .make(contacts_main, R.string.read_contacts_reason, Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.action_ok) {
@@ -62,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        when(requestCode) {
+        when (requestCode) {
             READ_CONTACTS_REQUEST_ID -> {
                 if (grantResults.isNotEmpty() && grantResults.first() == PackageManager.PERMISSION_GRANTED) {
                     Snackbar
@@ -80,7 +90,8 @@ class MainActivity : AppCompatActivity() {
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }
-            } else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+            }
+            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
     }
 
@@ -97,7 +108,11 @@ class MainActivity : AppCompatActivity() {
 
         Toast.makeText(
             this@MainActivity,
-            resources.getQuantityString(R.plurals.contacts_count_plurals, contacts.size, contacts.size),
+            resources.getQuantityString(
+                R.plurals.contacts_count_plurals,
+                contacts.size,
+                contacts.size
+            ),
             Toast.LENGTH_SHORT
         ).show()
     }
