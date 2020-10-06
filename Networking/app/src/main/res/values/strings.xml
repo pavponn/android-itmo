@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Networking</string>
+    <string name="full_image_description">High resolution image</string>
+    <string name="preview_image_description">Preview image</string>
+</resources>
