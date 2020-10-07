@@ -8,6 +8,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.networking.cardItem.ImageCard
 import com.example.networking.cardItem.ImageCardListAdapter
@@ -26,17 +30,26 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     private lateinit var vkConfig: VkConfig
     private var asyncTask: ImageLoader? = null
-    private var queryList: List<ImageCard>? = null
+    private lateinit var mViewModel: MyViewModel
+
+    class MyViewModel : ViewModel() {
+        var queryList: List<ImageCard>? = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        mViewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
         initConfig()
 
         setSearchViewListeners()
 
         main_progress_bar.visibility = View.GONE
-        setImageCardList(queryList)
+        if (mViewModel.queryList == null) {
+            executeQuery("")
+        }
+        setImageCardList(mViewModel.queryList)
+
         asyncTask = (lastCustomNonConfigurationInstance as? ImageLoader) ?: ImageLoader(this)
         asyncTask?.attachActivity(this)
     }
@@ -114,7 +127,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setImageCardList(imageCardList: List<ImageCard>?) {
-        queryList = imageCardList
+        mViewModel.queryList = imageCardList
         if (imageCardList != null) {
             main_recycler_view.visibility = View.VISIBLE
             main_recycler_view.apply {
