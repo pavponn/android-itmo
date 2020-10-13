@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 
@@ -23,20 +24,19 @@ class ImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image)
 
+        val highResUrl = intent.getStringExtra(HIGH_RES_URL_TOKEN)
         startService(Intent(this, HighResImageLoaderService::class.java).apply {
-            putExtra(HIGH_RES_URL_TOKEN, intent.getStringExtra(HIGH_RES_URL_TOKEN))
+            putExtra(HIGH_RES_URL_TOKEN, highResUrl)
         })
 
-        progress_bar_full.visibility = View.VISIBLE
+        if (!trySetImage(highResUrl)) {
+            progress_bar_full.visibility = View.VISIBLE
+        }
+
         broadcastReceiver = object : BroadcastReceiver () {
             override fun onReceive(context: Context?, intent: Intent?) {
                 val url = intent?.getStringExtra(INTENT_SERVICE_ACTION_TOKEN_URL)
-                if (url != null && HighResImageLoaderService.getImageWithUrl(url) != null) {
-                    val image = HighResImageLoaderService.getImageWithUrl(url)
-                    image_view_full.setImageBitmap(image)
-                    image_view_full.visibility = View.VISIBLE
-                    progress_bar_full.visibility = View.GONE
-                }
+                trySetImage(url)
             }
         }
 
@@ -46,6 +46,26 @@ class ImageActivity : AppCompatActivity() {
                 addCategory(Intent.CATEGORY_DEFAULT)
             }
         )
+    }
+
+    private fun trySetImage(imageUrl: String?): Boolean {
+        if (imageUrl != null) {
+            val highResImage = HighResImageLoaderService.getImageWithUrl(imageUrl)
+            if (highResImage != null) {
+                setImage(highResImage)
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+        return true
+    }
+
+    private fun setImage(image: Bitmap) {
+        image_view_full.visibility = View.VISIBLE
+        progress_bar_full.visibility = View.GONE
+        image_view_full.setImageBitmap(image)
     }
 
     override fun onDestroy() {
