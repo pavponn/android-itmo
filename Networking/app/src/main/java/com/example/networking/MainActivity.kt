@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
     private var asyncTask: ImageLoader? = null
     private lateinit var mViewModel: MyViewModel
 
+    companion object {
+        private const val DEFAULT_QUERY = "коронавирус"
+    }
+
     class MyViewModel : ViewModel() {
         var queryList: List<ImageCard>? = null
     }
@@ -46,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         main_progress_bar.visibility = View.GONE
         if (mViewModel.queryList == null) {
-            executeQuery("")
+            executeQuery(DEFAULT_QUERY)
         }
         setImageCardList(mViewModel.queryList)
 
