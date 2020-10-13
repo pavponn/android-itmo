@@ -145,6 +145,7 @@ class MainActivity : AppCompatActivity() {
     private class ImageLoader(activity: MainActivity?) : AsyncTask<String, Int, List<ImageCard>>() {
         var activityRef = WeakReference(activity)
         private var cachedResult: List<ImageCard>? = null
+
         override fun onPreExecute() {
             super.onPreExecute()
             activityRef.get()?.apply {
