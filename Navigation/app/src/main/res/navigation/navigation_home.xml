@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/homeRootFragment">
+    <fragment
+        android:id="@+id/homeRootFragment"
+        android:name="com.example.navigation.fragments.home.HomeFragment"
+        android:label="HomeRootFragment"
+        tools:layout="@layout/root_fragment">
+        <action
+            android:id="@+id/action_home_root_to_child"
+            app:destination="@+id/homeChildFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeChildFragment"
+        android:name="com.example.navigation.fragments.home.HomeChildFragment"
+        android:label="HomeChildFragment"
+        tools:layout="@layout/child_fragment">
+        <argument
+            android:name="depth"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_home_child_to_child"
+            app:destination="@+id/homeChildFragment" />
+    </fragment>
+</navigation>

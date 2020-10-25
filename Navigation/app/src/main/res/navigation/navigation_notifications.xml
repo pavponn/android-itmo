@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notifications"
+    app:startDestination="@id/notificationsRootFragment">
+    <fragment
+        android:id="@+id/notificationsRootFragment"
+        android:label="NotificationsRootFragment"
+        android:name="com.example.navigation.fragments.notifications.NotificationsFragment"
+        tools:layout="@layout/root_fragment">
+        <action
+            android:id="@+id/action_notifications_root_to_child"
+            app:destination="@+id/notificationsChildFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notificationsChildFragment"
+        android:label="NotificationsChildFragment"
+        android:name="com.example.navigation.fragments.notifications.NotificationsChildFragment"
+        tools:layout="@layout/child_fragment">
+        <argument
+            android:name="depth"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_notifications_child_to_child"
+            app:destination="@+id/notificationsChildFragment" />
+    </fragment>
+</navigation>
