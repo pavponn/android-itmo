@@ -1,7 +1,6 @@
 package com.example.animation.drawable
 
 import android.graphics.Canvas
-import android.graphics.drawable.RotateDrawable
 import android.os.Parcel
 import android.os.Parcelable
 import com.example.animation.GeometryConstants.Companion.G_180

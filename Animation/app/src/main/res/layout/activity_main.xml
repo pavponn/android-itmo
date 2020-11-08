@@ -9,9 +9,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:context=".MainActivity"
-        android:layout_gravity="center"
-        android:layout_weight="4">
+        android:layout_weight="5"
+        tools:context=".MainActivity">
 
         <com.example.animation.CustomLoaderView
             android:id="@+id/loader_view"
@@ -26,10 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
+        android:layout_weight="1"
         android:text="@string/loading"
         android:textColor="@color/colorLoader"
-        android:textSize="24sp"
-        android:layout_weight="1"/>
+        android:textSize="24sp" />
 
 </LinearLayout>
