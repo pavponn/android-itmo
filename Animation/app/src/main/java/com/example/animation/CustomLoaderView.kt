@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.*
-import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.AttributeSet
@@ -78,10 +77,10 @@ class CustomLoaderView @JvmOverloads constructor(
         super.onLayout(changed, left, top, right, bottom)
         borderCircles.forEach {
             it.apply {
-                centerX = this@CustomLoaderView.right / 2
-                centerY = this@CustomLoaderView.bottom / 2
-                initPositionX = centerX + offset
-                initPositionY = centerY
+                xCenter = this@CustomLoaderView.right / 2
+                yCenter = this@CustomLoaderView.bottom / 2
+                xInitPos = xCenter + offset
+                yInitPos = yCenter
             }
         }
     }
@@ -168,7 +167,6 @@ class CustomLoaderView @JvmOverloads constructor(
             override fun createFromParcel(source: Parcel?): SavedState? {
                 return SavedState(source)
             }
-
 
             override fun newArray(size: Int): Array<SavedState?> {
                 return Array(size) { null }

@@ -3,8 +3,8 @@ package com.example.animation.drawable
 import android.graphics.Canvas
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.animation.GeometryConstants.Companion.G_180
-import com.example.animation.GeometryConstants.Companion.G_360
+import com.example.animation.GeometryConstants.Companion.DEGREES_180
+import com.example.animation.GeometryConstants.Companion.DEGREES_360
 
 import kotlin.math.cos
 import kotlin.math.sin
@@ -17,12 +17,12 @@ class DrawableCircle(
     val offset: Int
 ) : AbstractDrawableElement(imageId) {
 
-    var initPositionX = -1
-    var initPositionY = -1
-    var centerX = -1
-    var centerY = -1
-    var curPositionX = -1
-    var curPositionY = -1
+    var xInitPos = -1
+    var yInitPos = -1
+    var xCenter = -1
+    var yCenter = -1
+    private var xCurPos = -1
+    private var yCurPos = -1
 
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -32,29 +32,29 @@ class DrawableCircle(
         parcel.readInt()
     ) {
 
-        initPositionX = parcel.readInt()
-        initPositionY = parcel.readInt()
-        centerX = parcel.readInt()
-        centerY = parcel.readInt()
-        curPositionX = parcel.readInt()
-        curPositionY = parcel.readInt()
+        xInitPos = parcel.readInt()
+        yInitPos = parcel.readInt()
+        xCenter = parcel.readInt()
+        yCenter = parcel.readInt()
+        xCurPos = parcel.readInt()
+        yCurPos = parcel.readInt()
     }
 
     override fun drawImpl(canvas: Canvas, toDraw: Boolean) {
-        val angle = curAngle * Math.PI / G_180
+        val angle = curAngle * Math.PI / DEGREES_180
         val rotatedX =
-            cos(angle) * (initPositionX - centerX) - sin(angle) * (initPositionY - centerY) + centerX
+            (xInitPos - xCenter) * cos(angle) - sin(angle) * (yInitPos - yCenter) + xCenter
         val rotatedY =
-            sin(angle) * (initPositionX - centerX) + cos(angle) * (initPositionY - centerY) + centerY
-        curPositionX = rotatedX.toInt()
-        curPositionY = rotatedY.toInt()
+            (xInitPos - xCenter) * sin(angle) + cos(angle) * (yInitPos - yCenter) + yCenter
+        xCurPos = rotatedX.toInt()
+        yCurPos = rotatedY.toInt()
         image.setBounds(
             (rotatedX - radius).toInt(),
             (rotatedY - radius).toInt(),
             (rotatedX + radius).toInt(),
             (rotatedY + radius).toInt()
         )
-        if (curAngle >= G_360) {
+        if (curAngle >= DEGREES_360) {
             curAngle = 0F
         }
         if (toDraw) {
@@ -69,12 +69,12 @@ class DrawableCircle(
         dest?.writeInt(radius)
         dest?.writeFloat(rotationSpeed)
         dest?.writeInt(offset)
-        dest?.writeInt(initPositionX)
-        dest?.writeInt(initPositionY)
-        dest?.writeInt(centerX)
-        dest?.writeInt(centerY)
-        dest?.writeInt(curPositionX)
-        dest?.writeInt(curPositionY)
+        dest?.writeInt(xInitPos)
+        dest?.writeInt(yInitPos)
+        dest?.writeInt(xCenter)
+        dest?.writeInt(yCenter)
+        dest?.writeInt(xCurPos)
+        dest?.writeInt(yCurPos)
     }
 
     companion object CREATOR : Parcelable.Creator<DrawableCircle> {

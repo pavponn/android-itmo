@@ -13,7 +13,7 @@ class DrawableSquare(
     private val yOffset: Int,
     private var multiplier: Float
 ) : AbstractDrawableElement(imageId) {
-    var increase = 1
+    private var increase = 1
 
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

@@ -26,7 +26,6 @@ class DrawableLoaders {
             return squares
         }
 
-
         fun circles(radius: Int, offset: Int, speed: Float, quantity: Int): List<DrawableCircle> {
             val circles = ArrayList<DrawableCircle>()
             for (i in 0 until quantity) {

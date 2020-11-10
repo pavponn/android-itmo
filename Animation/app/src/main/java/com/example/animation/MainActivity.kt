@@ -9,6 +9,7 @@ import com.example.animation.drawable.DrawableLoaders.Companion.squares
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
     companion object {
         private const val ANIMATION_DURATION = 1000L
         private const val INFINITE_ANIMATION = true
