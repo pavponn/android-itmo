@@ -1,6 +1,7 @@
 package com.example.networklibs.service
 
 import com.example.networklibs.cardItem.Post
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -11,13 +12,9 @@ interface JsonPlaceholderService {
     fun getPosts(): Call<List<Post>>
 
     @POST("/posts")
-    fun addPost(
-        @Query("title") title: String,
-        @Query("body") body: String,
-        @Query("userId") userId: Int
-    ): Call<Post>
+    fun addPost(@Body body: Map<String, String>): Call<Post>
 
     @DELETE("/posts/{postId}")
-    fun deletePost(@Path("postId") postId: Int): Call<Post>
+    fun deletePost(@Path("postId") postId: Int): Call<ResponseBody>
 
 }

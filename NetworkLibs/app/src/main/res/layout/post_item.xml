@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/card_image_preview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="8dp">
@@ -19,7 +19,6 @@
             android:id="@+id/post_title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="top"
             android:maxLines="1"
             android:textSize="34sp"/>
@@ -27,13 +26,21 @@
         <TextView
             android:id="@+id/post_body_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="22dp"
+            android:layout_marginEnd="22dp"
             android:layout_weight="4"
             android:maxLines="5"
             android:textSize="20sp"/>
-
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/delete_post_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="end|top"
+        android:contentDescription="@string/delete_post"
+        android:src="@drawable/ic_trash" />
 
 
 
