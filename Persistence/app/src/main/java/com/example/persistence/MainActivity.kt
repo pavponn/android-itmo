@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                 val message =
-                    resources.getString(R.string.load_response, "status code ${response.code()}")
+                    resources.getString(R.string.load_response, "${response.code()} ${response.message()}")
                 Log.i(TAG, message)
                 val posts: List<Post> = response.body() ?: emptyList()
                 addPostsToDbCoroutine(*posts.toTypedArray())
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 val message = appInstance.appResources
-                    .getString(R.string.delete_response, "status code ${response.code()}")
+                    .getString(R.string.delete_response, "${response.code()} ${response.message()}")
                 Log.i(TAG, message)
                 showSnackbar(message)
                 deletePostByIdFromDbCoroutine(postId)
@@ -144,7 +144,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
                 val message =
-                    resources.getString(R.string.add_response, "status code ${response.code()}")
+                    resources.getString(R.string.add_response, "${response.code()} ${response.message()}")
                 Log.i(TAG, message)
                 showSnackbar(message)
                 val postToInsert = Post(
