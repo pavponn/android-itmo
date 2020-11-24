@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Persistence</string>
+    <string name="load_error">Error occurred while loading posts: %1$s</string>
+    <string name="load_response">Post Get status code: %1$s</string>
+    <string name="add_response">Add Post status code: %1$s</string>
+    <string name="add_error">Error occurred while adding a post: %1$s</string>
+    <string name="delete_response">Delete Post status code: %1$s</string>
+    <string name="delete_error">Error occurred while deleting a post: %1$s</string>
+    <string name="action_ok">OK</string>
+    <string name="add_post">Add Post</string>
+    <string name="delete_post">Delete Post</string>
+</resources>
