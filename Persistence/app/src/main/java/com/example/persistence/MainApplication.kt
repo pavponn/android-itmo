@@ -2,12 +2,14 @@ package com.example.persistence
 
 import android.app.Application
 import android.content.res.Resources
+import androidx.room.Room
 import com.example.persistence.service.JsonPlaceholderService
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 class MainApplication : Application() {
     lateinit var service: JsonPlaceholderService
+    lateinit var db: AppDatabase
     lateinit var appResources: Resources
 
     override fun onCreate() {
@@ -18,6 +20,11 @@ class MainApplication : Application() {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
         service = retrofit.create(JsonPlaceholderService::class.java)
+        db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "PersistenceHwDb"
+        ).build()
+
         appResources = resources
     }
 

@@ -9,4 +9,6 @@
     <string name="action_ok">OK</string>
     <string name="add_post">Add Post</string>
     <string name="delete_post">Delete Post</string>
+    <string name="saved_load_from_db_flag">LOAD_FROM_DB_FLAG</string>
+    <string name="reset">Reset</string>
 </resources>
