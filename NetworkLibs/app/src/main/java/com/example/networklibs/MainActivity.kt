@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.networklibs.MainApplication.Companion.mainApplication
 import com.example.networklibs.cardItem.Post
 import com.example.networklibs.cardItem.PostCardListAdapter
+import com.example.networklibs.extensions.enqueue
 import com.example.networklibs.random.RandomStringGenerator
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadAndSetPostsList() {
         val call = mainApplication.service.getPosts()
         showProgressBarAndHideRecycler()
-        call.enqueue(object : Callback<List<Post>> {
+        call.enqueue(this@MainActivity, object : Callback<List<Post>> {
             override fun onFailure(call: Call<List<Post>>, t: Throwable) {
                 val message = resources.getString(R.string.load_error, t.message)
                 Log.e(TAG, message)
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     private fun addPost() {
         val call = mainApplication.service.addPost(generateRandomRequestBody())
 
-        call.enqueue(object : Callback<Post> {
+        call.enqueue(this@MainActivity, object : Callback<Post> {
             override fun onFailure(call: Call<Post>, t: Throwable) {
                 val message = resources.getString(R.string.add_error, t.message)
                 Log.e(TAG, message)
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         val postId = mViewModel.postsList!![position].id
         val call = mainApplication.service.deletePost(postId)
 
-        call.enqueue(object : Callback<ResponseBody> {
+        call.enqueue(this@MainActivity, object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 val message = resources.getString(R.string.delete_error, t.message)
                 Log.e(TAG, message)

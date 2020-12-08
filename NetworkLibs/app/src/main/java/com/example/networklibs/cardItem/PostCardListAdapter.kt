@@ -30,10 +30,4 @@ class PostCardListAdapter(
         holder.bodyText.text = posts[position].body
         holder.deleteButton.setOnClickListener { onClick(position) }
     }
-
-    companion object {
-        private const val TAG = "PostCardListAdapter"
-    }
-
-
 }
