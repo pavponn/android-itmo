@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun generateRandomRequestBody(): Map<String, String> {
-        val titleLength = Random.nextInt(5, 10)
+        val titleLength = Random.nextInt(8, 20)
         val bodyLength = Random.nextInt(50, 200)
         val title = RandomStringGenerator.getRandomString(titleLength)
         val body = RandomStringGenerator.getRandomString(bodyLength)
