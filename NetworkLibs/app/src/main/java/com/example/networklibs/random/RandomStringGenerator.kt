@@ -4,7 +4,8 @@ import java.util.*
 
 class RandomStringGenerator {
     companion object {
-        private const val ALLOWED_CHARACTERS = "QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
+        private const val ALLOWED_CHARACTERS =
+            "QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
 
         fun getRandomString(sizeOfRandomString: Int): String {
             val random = Random()

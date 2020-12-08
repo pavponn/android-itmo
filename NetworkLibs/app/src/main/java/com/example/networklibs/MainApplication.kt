@@ -12,7 +12,7 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        mainApplication = this
         val retrofit = Retrofit.Builder()
             .baseUrl("https://jsonplaceholder.typicode.com")
             .addConverterFactory(MoshiConverterFactory.create())
@@ -22,7 +22,7 @@ class MainApplication : Application() {
     }
 
     companion object {
-        lateinit var instance: MainApplication
+        lateinit var mainApplication: MainApplication
             private set
     }
 }

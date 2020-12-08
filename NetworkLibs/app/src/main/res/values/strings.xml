@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">NetworkLibs</string>
+    <string name="load_success">Posts were successfully loaded, status code: %1$s</string>
+    <string name="load_fail">Posts were not loaded, status code: %1$s</string>
     <string name="load_error">Error occurred while loading posts: %1$s</string>
-    <string name="load_success">Posts were successfully loaded: %1$s</string>
-    <string name="add_success">Post was successfully added: %1$s</string>
+    <string name="add_success">Post was successfully added, status code: %1$s</string>
+    <string name="add_fail">Post was not added, status code: %1$s</string>
     <string name="add_error">Error occurred while adding a post: %1$s</string>
-    <string name="delete_success">Post was successfully deleted: %1$s</string>
+    <string name="delete_success">Post was successfully deleted, status code: %1$s</string>
+    <string name="delete_fail">Post was not deleted, status code: %1$s</string>
     <string name="delete_error">Error occurred while deleting a post: %1$s</string>
     <string name="action_ok">OK</string>
     <string name="add_post">Add Post</string>

@@ -7,12 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.networklibs.MainApplication.Companion.instance
+import com.example.networklibs.MainApplication.Companion.mainApplication
 import com.example.networklibs.cardItem.Post
 import com.example.networklibs.cardItem.PostCardListAdapter
 import com.example.networklibs.random.RandomStringGenerator
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,21 +40,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadAndSetPostsList() {
-        val call = instance.service.getPosts()
+        val call = mainApplication.service.getPosts()
         showProgressBarAndHideRecycler()
         call.enqueue(object : Callback<List<Post>> {
             override fun onFailure(call: Call<List<Post>>, t: Throwable) {
                 val message = resources.getString(R.string.load_error, t.message)
                 Log.e(TAG, message)
-                Snackbar
-                    .make(main_layout, message, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(R.string.action_ok) {}
-                    .show()
+                showSnackbar(message)
                 hideProgressBarAndShowRecycler()
             }
 
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                val message = resources.getString(R.string.load_success, "status code ${response.code()}")
+                val message = getLoadMessageByResponse(response)
                 Log.i(TAG, message)
                 hideProgressBarAndShowRecycler()
                 setPostsList(response.body()?.toMutableList())
@@ -62,37 +60,43 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addPost() {
-        val titleLength = Random.nextInt(5, 10)
-        val bodyLength = Random.nextInt(50, 200)
-        val title = RandomStringGenerator.getRandomString(titleLength)
-        val body = RandomStringGenerator.getRandomString(bodyLength)
-        val userId = Random.nextInt(1, 1000)
-        val requestBody = mapOf("title" to title, "body" to body, "userId" to userId.toString())
-        val call = instance.service.addPost(requestBody)
+        val call = mainApplication.service.addPost(generateRandomRequestBody())
 
         call.enqueue(object : Callback<Post> {
             override fun onFailure(call: Call<Post>, t: Throwable) {
                 val message = resources.getString(R.string.add_error, t.message)
                 Log.e(TAG, message)
-                Snackbar
-                    .make(main_layout, message, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(R.string.action_ok) {}
-                    .show()
+                showSnackbar(message)
             }
 
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                val message = resources.getString(R.string.add_success, "status code ${response.code()}")
+                val message = getAddMessageByResponse(response)
                 Log.i(TAG, message)
-                Snackbar
-                    .make(main_layout, message, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(R.string.action_ok) {}
-                    .show()
-                mViewModel.postsList?.add(0, response.body()!!)
-                main_recycler_view.adapter?.notifyItemChanged(0)
-                main_recycler_view.adapter?.notifyItemRangeChanged(
-                    0,
-                    mViewModel.postsList?.size ?: 0
-                )
+                showSnackbar(message)
+                addPostToModelView(response.body())
+            }
+        })
+    }
+
+    private fun deletePost(position: Int) {
+        if (mViewModel.postsList == null) {
+            return
+        }
+        val postId = mViewModel.postsList!![position].id
+        val call = mainApplication.service.deletePost(postId)
+
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                val message = resources.getString(R.string.delete_error, t.message)
+                Log.e(TAG, message)
+                showSnackbar(message)
+            }
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val message = getDeleteMessageByResponse(response)
+                Log.i(TAG, message)
+                showSnackbar(message)
+                deletePostFromModelView(position)
             }
         })
     }
@@ -102,9 +106,18 @@ class MainActivity : AppCompatActivity() {
         if (posts != null) {
             main_recycler_view.apply {
                 layoutManager = LinearLayoutManager(this@MainActivity)
-                adapter = PostCardListAdapter(posts, main_layout)
+                adapter = PostCardListAdapter(posts) { deletePost(it) }
             }
         }
+    }
+
+    private fun generateRandomRequestBody(): Map<String, String> {
+        val titleLength = Random.nextInt(5, 10)
+        val bodyLength = Random.nextInt(50, 200)
+        val title = RandomStringGenerator.getRandomString(titleLength)
+        val body = RandomStringGenerator.getRandomString(bodyLength)
+        val userId = Random.nextInt(1, 1000)
+        return mapOf("title" to title, "body" to body, "userId" to userId.toString())
     }
 
     private fun showProgressBarAndHideRecycler() {
@@ -118,6 +131,59 @@ class MainActivity : AppCompatActivity() {
         main_recycler_view.visibility = View.VISIBLE
         add_post_button.visibility = View.VISIBLE
     }
+
+    private fun addPostToModelView(post: Post?) {
+        if (post == null) {
+            return
+        }
+        mViewModel.postsList?.add(post)
+        main_recycler_view.recycledViewPool.clear()
+        main_recycler_view.adapter?.notifyDataSetChanged()
+    }
+
+    private fun deletePostFromModelView(position: Int) {
+        if (mViewModel.postsList == null || position >= mViewModel.postsList!!.size) {
+            return
+        }
+
+        mViewModel.postsList!!.removeAt(position)
+        main_recycler_view.recycledViewPool.clear()
+        main_recycler_view.adapter?.notifyDataSetChanged()
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar
+            .make(main_layout, message, Snackbar.LENGTH_INDEFINITE)
+            .setAction(R.string.action_ok) {}
+            .show()
+    }
+
+    private fun <T> getLoadMessageByResponse(response: Response<T>): String {
+        return getMessageByResponse(response, R.string.load_success, R.string.load_fail)
+    }
+
+    private fun <T> getAddMessageByResponse(response: Response<T>): String {
+        return getMessageByResponse(response, R.string.add_success, R.string.add_fail)
+    }
+
+    private fun <T> getDeleteMessageByResponse(response: Response<T>): String {
+        return getMessageByResponse(response, R.string.delete_success, R.string.delete_fail)
+    }
+
+    private fun <T> getMessageByResponse(
+        response: Response<T>,
+        successMsgId: Int,
+        failMsgId: Int
+    ): String {
+        return if (response.isSuccessful) {
+            mainApplication.appResources
+                .getString(successMsgId, "${response.code()}")
+        } else {
+            mainApplication.appResources
+                .getString(failMsgId, "${response.code()}")
+        }
+    }
+
 
     companion object {
         private const val TAG = "MainActivity"
